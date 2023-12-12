@@ -10,8 +10,8 @@ const HomePage = () => {
         Manage and organize information about the animals in your care.
       </p>
       <div className="cta-buttons">
-        <Link to="/animals" className="btn">
-          View Animals
+        <Link to="/pet-list" className="btn">
+          View List of Pets
         </Link>
         
         <Link to="/add-animal" className="btn">
