@@ -14,8 +14,8 @@ const HomePage = () => {
           View List of Pets
         </Link>
         
-        <Link to="/add-animal" className="btn">
-          Add New Animal
+        <Link to="/add-pet" className="btn">
+          Add A New Pet
         </Link>
       </div>
     </div>

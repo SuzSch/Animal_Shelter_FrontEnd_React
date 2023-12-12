@@ -24,6 +24,7 @@ const PetList = () => {
               <h3>{pet.name}</h3>
               <p>Breed: {pet.breed}</p>
               <p>Age: {pet.age} years</p>
+              {/* Other details yet to come */}
             </li>
           ))}
         </ul>
