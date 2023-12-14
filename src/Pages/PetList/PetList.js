@@ -6,7 +6,7 @@ const PetList = () => {
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.example.com/pets')
+    axios.get('http://localhost:5000/api/FuturePets')
       .then(response => setPets(response.data))
       .catch(error => console.error('Error fetching pets:', error));
   }, []);
@@ -20,11 +20,23 @@ const PetList = () => {
       ) : (
         <ul>
           {pets.map(pet => (
-            <li key={pet.id}>
+            <li key={pet.futurePetId}>
               <h3>{pet.name}</h3>
+              <p>Pet Type: {pet.petType}</p>
               <p>Breed: {pet.breed}</p>
               <p>Age: {pet.age} years</p>
-              {/* Other details yet to come */}
+              <p>Coat Color: {pet.coatColor}</p>
+
+              {pet.petType === 'Cat' && (
+                <div>
+                  <p>FIV Positive: {pet.fivPositive ? 'Yes' : 'No'}</p>
+                </div>
+              )}
+              {pet.petType === 'Dog' && (
+                <div>
+                  <p>Dog Size: {pet.dogSize}</p>
+                </div>
+              )}
             </li>
           ))}
         </ul>

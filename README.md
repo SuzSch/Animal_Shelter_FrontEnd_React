@@ -28,3 +28,8 @@ This project is a simple Animal Shelter Admin System implemented using React. It
    npm start
 
 The app will be accessible at http://localhost:3000 in your web browser.
+
+## Usage
+1. **Open the application in your web browser.**
+2. **Add new pets by filling out the form with the required details.**
+3. **Manage pet details by updating or deleting existing pets.**
