@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from "react";
+import './ReusableForm.css';
 
 const ReusableForm = ({ onSubmit, initialData }) => {
-
-  const [formData, setFormData] = useState(initialData || getDefaultFormData());
-
-  const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target;
-
-    if (name === 'Age' && (isNaN(value) || Number(value) <= 0 )) {
-      return;
-    }
-
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
-  };
 
   const getDefaultFormData = () => ({
     Name: '',
@@ -26,6 +12,21 @@ const ReusableForm = ({ onSubmit, initialData }) => {
     DogSize: '',
     PetType: 'Cat', //default set to Cat
   });
+
+  const [formData, setFormData] = useState(initialData || getDefaultFormData());
+
+  const handleInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+
+    if (name === 'Age' && (isNaN(value) || Number(value) <= 0)) {
+      return;
+    }
+
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
 
   useEffect(() => {
     setFormData(initialData || getDefaultFormData());
@@ -41,9 +42,9 @@ const ReusableForm = ({ onSubmit, initialData }) => {
         <label>
           Pet Type:
           <select
-          name="PetType"
-          value={formData.PetType}
-          onChange={handleInputChange}>
+            name="PetType"
+            value={formData.PetType}
+            onChange={handleInputChange}>
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
           </select>
@@ -53,7 +54,7 @@ const ReusableForm = ({ onSubmit, initialData }) => {
         <label>
           Name:
           <input
-          type="text"
+            type="text"
             name="Name"
             value={formData.Name}
             onChange={handleInputChange}
@@ -120,7 +121,7 @@ const ReusableForm = ({ onSubmit, initialData }) => {
               name="DogSize"
               value={formData.DogSize}
               onChange={handleInputChange}
-              >
+            >
               <option value="">Select Size</option>
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
@@ -129,6 +130,9 @@ const ReusableForm = ({ onSubmit, initialData }) => {
           </label>
         </div>
       )}
+      <div>
+        <button type="submit">Submit</button>
+      </div>
     </form>
   );
 };
