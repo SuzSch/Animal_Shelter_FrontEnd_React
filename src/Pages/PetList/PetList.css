@@ -1,0 +1,38 @@
+.pet-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pet-list h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.pet-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pet-list li {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.pet-list h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #555;
+}
+
+.pet-list p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #777;
+}
+
+.pet-list div {
+  margin-top: 10px;
+}

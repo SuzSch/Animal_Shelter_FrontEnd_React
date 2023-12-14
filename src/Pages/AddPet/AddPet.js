@@ -1,12 +1,16 @@
 import React from "react";
 import ReusableForm from "../../Components/ReusableForm.js/ReusableForm";
+import axios from 'axios';
 
 const AddPet = () => {
 
-  const handleAddPet = (formData) => {
-    
-    console.log('Adding pet:', formData);
-    // Use an API call to add the pet to the database
+  const handleAddPet = async (formData) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/FuturePets', formData);
+      console.log('Added pet:', response.data);
+    } catch (error) {
+      console.error('Error adding pet', error);
+    }
   };
 
   return (
