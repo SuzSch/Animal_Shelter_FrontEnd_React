@@ -6,6 +6,11 @@ const ReusableForm = ({ onSubmit, initialData }) => {
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
+
+    if (name === 'Age' && (isNaN(value) || Number(value) <= 0 )) {
+      return;
+    }
+
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value,
@@ -14,7 +19,7 @@ const ReusableForm = ({ onSubmit, initialData }) => {
 
   const getDefaultFormData = () => ({
     Name: '',
-    Age: '',
+    Age: 0,
     Breed: '',
     CoatColor: '',
     FivPositive: false,
@@ -44,6 +49,88 @@ const ReusableForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
       </div>
+      <div>
+        <label>
+          Name:
+          <input
+          type="text"
+            name="Name"
+            value={formData.Name}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Age:
+          <input
+            type="number"
+            name="Age"
+            value={formData.Age}
+            onChange={handleInputChange}
+            min="1"
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Breed:
+          <input
+            type="text"
+            name="Breed"
+            value={formData.Breed}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Coat Color:
+          <input
+            type="text"
+            name="CoatColor"
+            value={formData.CoatColor}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+      </div>
+      {formData.PetType === 'Cat' && (
+        <div>
+          <label>
+            FIV Positive
+            <input
+              type="checkbox"
+              name="FivPositive"
+              checked={formData.FivPositive}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+        </div>
+      )}
+      {formData.PetType === 'Dog' && (
+        <div>
+          <label>
+            Dog Size:
+            <select
+              name="DogSize"
+              value={formData.DogSize}
+              onChange={handleInputChange}
+              >
+              <option value="">Select Size</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </select>
+          </label>
+        </div>
+      )}
     </form>
-  )
-}
+  );
+};
+
+export default ReusableForm;
