@@ -103,12 +103,13 @@ const ReusableForm = ({ onSubmit, initialData }) => {
         <div>
           <label>
             FIV Positive
+            <p>Check if true:</p>
             <input
               type="checkbox"
               name="FivPositive"
               checked={formData.FivPositive}
               onChange={handleInputChange}
-              required
+          
             />
           </label>
         </div>
