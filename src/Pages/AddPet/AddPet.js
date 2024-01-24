@@ -16,7 +16,7 @@ const AddPet = () => {
   return (
     <div>
       <h1>Add a New Pet</h1>
-      <ReusableForm onSubmit={handleAddPet} />
+      <ReusableForm onSubmit={handleAddPet} encType="multipart/form-data" />
     </div>
   );
 };
