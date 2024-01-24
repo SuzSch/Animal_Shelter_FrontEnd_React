@@ -9,6 +9,7 @@ const ReusableForm = ({ onSubmit, initialData }) => {
     Breed: '',
     CoatColor: '',
     FivPositive: false,
+    Image: null,
     DogSize: '',
     PetType: 'Cat', //default set to Cat
   });
@@ -36,6 +37,12 @@ const ReusableForm = ({ onSubmit, initialData }) => {
     event.preventDefault();
     onSubmit(formData);
   };
+
+const handleImageChange = (event) => {
+  const file = event.target.files[0];
+  setFormData({...formData, Image: file});
+};
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -99,6 +106,20 @@ const ReusableForm = ({ onSubmit, initialData }) => {
           />
         </label>
       </div>
+
+      <div>
+        <label>
+          Add Image:
+          <input
+            type="file"
+            name="Image"
+            defaultValue={formData.Image}
+            onChange={handleImageChange}
+            required
+          />
+        </label>
+      </div>
+
       {formData.PetType === 'Cat' && (
         <div>
           <label>
