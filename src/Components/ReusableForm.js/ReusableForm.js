@@ -35,16 +35,22 @@ const ReusableForm = ({ onSubmit, initialData }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formData = new FormData(event.target); // This will handle the file upload correctly
     onSubmit(formData);
+    resetForm();
   };
 
-const handleImageChange = (event) => {
-  const file = event.target.files[0];
-  setFormData({...formData, Image: file});
-};
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setFormData({ ...formData, Image: file });
+  };
+
+  const resetForm = () => {
+    setFormData(getDefaultFormData());
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div>
         <label>
           Pet Type:
@@ -130,7 +136,7 @@ const handleImageChange = (event) => {
               name="FivPositive"
               checked={formData.FivPositive}
               onChange={handleInputChange}
-          
+
             />
           </label>
         </div>
